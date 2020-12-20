@@ -1,0 +1,14 @@
+ <div class="col-4 form-group">
+                    <label for="Password">Password :- </label>
+                    <input type="password" class="form-control" value="<?= $vendarPassword ?>" id="vendarpassword" name="password" />
+                    <small class="required"><?= $e_vendarPassword ?></small>
+                </div>
+                <div class="col-4 form-group">
+                    <label for="conformPassword">Conform Password :- </label>
+                    <input type="password" class="form-control" value="<?= $vendarCpassword ?>" id="vendarcpassword" name="cpassword" />
+                    <small class="required"><?= $e_vendarCpassWord . " " . $e_checkPassword ?></small>
+                </div>
+
+
+
+ 
