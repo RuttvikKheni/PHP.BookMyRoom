@@ -15,6 +15,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#3">Holls</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="MyRoomsHolls.php">My Rooms And Holls</a>
+            </li>
             <?php if (isset($_SESSION['username'])) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="Logout.php">Log Out</a>

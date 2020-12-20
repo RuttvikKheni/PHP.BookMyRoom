@@ -7,15 +7,13 @@ if (!empty($vendarStatus['status'])) {
     if (isset($_POST['capacity'])) {
 
         $imageArray = array("24UScreenshot (5).png", "24UScreenshot (5).png", "Screenshot (2).png", "Screenshot (3).png", "Screenshot (4).png");
-        $RoomID = "";
-        $RoomIMG = $imageArray[rand(0, 4)];
-        $RoomStatus = "Unbook";
-        $RoomHolder = "";
+        $HollID = "";
+        $HollIMG = $imageArray[rand(0, 4)];
+        $HollStatus = "Unbook";
         $Capacity = $_POST['capacity'];
         $BookDate = "";
-        $EndDate = "";
 
-        $query = "INSERT INTO `rooms`(`vendarID`,`roomIMG`,`roomstatus`, `capacity`) VALUES ('$vendarID','$RoomIMG','$RoomStatus','$Capacity')";
+        $query = "INSERT INTO `holls`(`vendarID`, `hollIMG`, `hollstatus`, `persons`) VALUES ('$vendarID','$HollIMG','$HollStatus','$Capacity')";
         echo $query;
         $result = mysqli_query($con, $query);
         if ($result) {
@@ -25,14 +23,14 @@ if (!empty($vendarStatus['status'])) {
 }
 
 if (isset($_GET['delete'])) {
-    $deleteRoomID = $_GET['delete'];
-    $query = "DELETE FROM `rooms` WHERE roomID='$deleteRoomID' AND vendarID='$vendarID'";
+    $deleteHollID = $_GET['delete'];
+    $query = "DELETE FROM `holls` WHERE hollID='$deleteRoomID' AND vendarID='$vendarID'";
     $result = mysqli_query($con, $query);
     if ($result) {
         header("Location: Homee.php");
     }
 }
-$query = "SELECT * FROM ROOMS WHERE vendarID='$vendarID'";
+$query = "SELECT * FROM holls WHERE vendarID='$vendarID'";
 $result = mysqli_query($con, $query);
 ?>
 <div class="col-8 mx-auto rooms">
@@ -43,14 +41,14 @@ $result = mysqli_query($con, $query);
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">RoomId</th>
-                    <th scope="col">Room Img</th>
-                    <th scope="col">Room Status</th>
-                    <th scope="col">Room Holder</th>
+                    <th scope="col">HollId</th>
+                    <th scope="col">Holl Img</th>
+                    <th scope="col">Holl Status</th>
+                    <th scope="col">Holl Holder</th>
+                    <th scope="col">Holl Holder Number</th>
                     <th scope="col">Persons</th>
                     <th scope="col">Book Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">DELETE Room</th>
+                    <th scope="col">DELETE Holl</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,13 +60,13 @@ $result = mysqli_query($con, $query);
                 ?>
                     <tr>
                         <th scope="row"><?= $i ?></th>
-                        <td><img style="width: 100px;" src="./RoomIMG/<?= $row['roomIMG'] ?>" alt="Room Img"></td>
-                        <td><?= $row['roomstatus'] ?></td>
-                        <td><?= $row['roomholder'] ?></td>
-                        <td><?= $row['capacity'] ?></td>
+                        <td><img style="width: 100px;" src="./RoomIMG/<?= $row['hollIMG'] ?>" alt="Room Img"></td>
+                        <td><?= $row['hollstatus'] ?></td>
+                        <td><?= $row['hollholdername'] ?></td>
+                        <td><?= $row['hollholdernumber'] ?></td>
+                        <td><?= $row['persons'] ?></td>
                         <td><?= $row['bookdate'] ?></td>
-                        <td><?= $row['enddate'] ?></td>
-                        <td><a href="Homee.php?delete=<?= $row['roomID'] ?>">Delete Room</a></td>
+                        <td><a href="Homee.php?delete=<?= $row['hollID'] ?>">Delete Room</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -77,13 +75,12 @@ $result = mysqli_query($con, $query);
     <?php if (!empty($vendarStatus['status'])) { ?>
         <form method="POST">
             <select name="capacity" id="">
-                <option value="2" selected>2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="more">more...</option>
+                <option value="Less then 100" selected>Less then 100</option>
+                <option value="Lass then 200">Lass then 200</option>
+                <option value="Lass then 300">Lass then 300</option>
+                <option value="More Then 300">More Then 300</option>
             </select>
-            <button class="btn btn-primary addroom">Add Rooms</button>
+            <button class="btn btn-primary addroom">Add Holl</button>
         </form>
     <?php } ?>
 </div>

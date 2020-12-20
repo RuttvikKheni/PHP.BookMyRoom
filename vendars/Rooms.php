@@ -68,7 +68,15 @@ $result = mysqli_query($con, $query);
                         <td><?= $row['capacity'] ?></td>
                         <td><?= $row['bookdate'] ?></td>
                         <td><?= $row['enddate'] ?></td>
-                        <td><a href="Homee.php?delete=<?= $row['roomID'] ?>">Delete Room</a></td>
+                        <td><a disabled="disabled" href="<?php
+                                                            if ($row['roomstatus'] === "booked") {
+                                                                echo "";
+                                                            } else {
+                                                                $roomID = $row['roomID'];
+                                                                echo "Homee.php?delete=$roomID";
+                                                            }
+
+                                                            ?>">Delete Room</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

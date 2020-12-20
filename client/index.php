@@ -3,7 +3,6 @@ session_start();
 if (empty($_SESSION['username'])) {
     header("Location: login.php");
 }
-print_r($_SESSION);
 ?>
 <html>
 

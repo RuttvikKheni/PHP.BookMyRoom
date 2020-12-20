@@ -12,7 +12,6 @@
                     <th scope="col">Hotal Name</th>
                     <th scope="col">Room Capacity</th>
                     <th scope="col">Hotal Name</th>
-                    <th scope="col">View Details</th>
                     <th scope="col">Book Now</th>
                 </tr>
             </thead>
@@ -33,8 +32,7 @@
                         <td><?= $row['hotalname'] ?></td>
                         <td><?= $row['capacity'] ?></td>
                         <td><?= $row['hotallocation'] ?></td>
-                        <td><a class="btn btn-primary" href="ViewRoom.php?roomID=<?= $row['roomID'] ?>">View Details</a></td>
-                        <td><a class="btn btn-danger" href="">Book Now</a></td>
+                        <td><a class="btn btn-danger" href="BookRoom.php?roomID=<?= $row['roomID'] ?>">Book Now</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
